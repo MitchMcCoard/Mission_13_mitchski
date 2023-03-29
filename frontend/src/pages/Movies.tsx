@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import data from './MovieData.json';
+import data from '../MovieData.json';
 
 const MovieData = data.MovieData;
 

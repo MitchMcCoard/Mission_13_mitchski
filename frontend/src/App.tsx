@@ -1,25 +1,33 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TopBanner from './custom';
+import MovieList from './pages/Movies';
+//import pagename from "./pagename";
+// Used for the browser routing, pretty sick
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './pages/Layout'; //Need to build nav bar here
+import NotFound from './pages/404';
+import Podcast from './pages/PodcastPage';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <div>
+    //   <TopBanner saying="neato burrito" />
+    //   <MovieList />
+    // </div>
+
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="Movies" element={<MovieList />} />
+          <Route path="Podcasts" element={<Podcast />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
